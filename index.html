@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="app/css/normalize.min.css">
+    <link rel="stylesheet" href="app/css/index.css">
+    <title>QuestStars</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="wrapper__container">
+
+            <header class="header">
+                <div class="header__container">
+                    <div class="header_left">
+                        <p class="logo">QuestStars</p>
+                        <div class="header_menu">
+                            <nav class="header_menu-nav">
+                                <a href="#">Квесты</a>
+                                <a href="#">Отзывы</a>
+                                <a href="#">Записаться на квест</a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="header_ui">
+                        <div class="ui__search" >
+                            <input class="ui_input" type="text" name="search" id="searchContainer" placeholder="Поиск...">
+                            <img src="app/img/icons8-loupe-50.png" alt="">
+                        </div>
+                        <a id="modal_btn" href="#"><img src="app/img/icons8-person-40.png" alt=""></a>
+                    </div>
+                </div>
+            </header>
+
+            <main class="main">
+
+            </main>
+
+            <footer class="footer">
+
+            </footer>
+        </div>
+        <div class="modal1 modal_disable" id="modal_form">
+            <div class="modal__container" id="modalContainer">
+                <div class="modal_mode">
+                    <a href="#" class="registration_mode active" id="registration_mode">Зарегистрироваться</a>
+                    <a href="#" class="authorization_mode" id="authorization_mode">Авторизоваться</a>
+                </div>
+                <form id="registration" class="reg_form" action="" method="POST">
+                    <label>Фамилия</label>
+                    <input type="text" name="surname">
+                    <label>Имя</label>
+                    <input type="text" name="name">
+                    <label>Отчество</label>
+                    <input type="text" name="patronymic">
+                    <label>Email</label>
+                    <input type="text" name="email">
+                    <label>Номер телефона</label>
+                    <input type="text" name="phone">
+                    <label>Email</label>
+                    <input type="text" name="password">
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+                <form id="authorization" class="auth_form disable" action="" method="POST">
+                    <label>Email</label>
+                    <input type="text" name="email_authorization">
+                    <label>Пароль</label>
+                    <input type="text" name="password_authorization">
+                    <button type="submit">Авторизоваться</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="app/js/modal.js"></script>
+</html>
