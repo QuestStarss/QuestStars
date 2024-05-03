@@ -47,10 +47,27 @@ class User
         $stmt = $this->dbconnection->prepare($query);
 
         try {
-            return $stmt->execute($params);
+            $stmt->execute($params);
+            return ['message' => 'Пользователь успешно добавлен'];
         }
         catch (\PDOException $e) {
             return ['message' => $e->getMessage()];
+        }
+    }
+
+    public function auth($email, $password)
+    {
+        $stmt = $this->dbconnection->prepare("SELECT * FROM User WHERE `email` = ?");
+        $stmt->execute([$email]);
+
+        $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+
+        if (password_verify($password,$user['Password'])){
+            return $user;
+        }
+        else{
+            return ['message' => 'error'];
         }
     }
 }
