@@ -31,6 +31,11 @@
                             <img src="app/img/icons8-loupe-50.png" alt="">
                         </div>
                         <a id="modal_btn" href="#"><img src="app/img/icons8-person-40.png" alt=""></a>
+                        <ul class="db_search" id="result_search">
+                            <li>Пример</li>
+                            <li>Пример</li>
+                            <li>Пример</li>
+                        </ul>
                     </div>
                 </div>
             </header>
@@ -49,7 +54,7 @@
                     <a href="#" class="registration_mode active" id="registration_mode">Зарегистрироваться</a>
                     <a href="#" class="authorization_mode" id="authorization_mode">Авторизоваться</a>
                 </div>
-                <form id="registration" class="reg_form" action="" method="POST">
+                <form id="registration" class="reg_form" action="app/php/registration.php" method="POST">
                     <label>Фамилия</label>
                     <input type="text" name="surname">
                     <label>Имя</label>
@@ -64,7 +69,7 @@
                     <input type="text" name="password">
                     <button type="submit">Зарегистрироваться</button>
                 </form>
-                <form id="authorization" class="auth_form disable" action="" method="POST">
+                <form id="authorization" class="auth_form disable" action="app/php/authorization.php" method="POST">
                     <label>Email</label>
                     <input type="text" name="email_authorization">
                     <label>Пароль</label>

@@ -43,13 +43,16 @@ document.addEventListener('DOMContentLoaded', function(event) {
     })
 
     let searchContainer = document.getElementById('searchContainer');
+    let result_search = document.getElementById('result_search')
 
     searchContainer.addEventListener('click', (event) => {
         if(event.target !== searchContainer) {
             searchContainer.classList.remove('expanded')
+            result_search.classList.remove('result_search')
         }
         else {
             searchContainer.classList.add('expanded')
+            result_search.classList.add('result_search')
         }
     })
 

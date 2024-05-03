@@ -69,7 +69,21 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     gap: 20px
+}
+
+.db_search {
+    display: none;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.db_search.result_search {
+    display: flex;
 }
 
 .header_ui > img {
