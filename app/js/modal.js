@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     modal.addEventListener('click', () => {
         console.log('click');
         modal_form.classList.remove('modal_disable');
-        modalContainer.classList.add('form_active');
     });
 
     modal_form.addEventListener('click', (event) => {
@@ -15,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
         }
         else {
-            modalContainer.classList.remove('form_active');
             modal_form.classList.add('modal_disable');
         }
     });
