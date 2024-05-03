@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %server/{REQUEST_FILENAME} !-f
+RewriteRule ^(.+)$ server/apiListener.php?q=$1 [L,QSA]
