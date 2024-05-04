@@ -41,41 +41,59 @@
             </header>
 
             <main class="main">
+                <section class="main_tile">
+                    <p><span>QuestStars</span> - это не просто сайт для бронирования <br> квестов</p>
+                    <p><span>Это</span> портал в мир захватывающих приключений, где реальность <br> переплетается с фантазией, а логика и смекалка становятся ключом к<br> победе</p>
+                    <p><span>Мы</span> - команда энтузиастов, которые верят, что квесты - это не просто <br> развлечение, а уникальный способ сплотить друзей, испытать себя <br>открыть новые грани своего потенциала.</p>
+                </section>
+                <section class="reviews">
+                    <div class="reviews__container">
+                        <h1>Отзывы</h1>
+                        <div class="pagination" id="pagination"></div>
+                        <div class="reviews__wrapper">
+                            <button id="prevPage"><img src="app/img/arrow_left.png" alt=""></button>
+                            <div class="reviews__see" id="reviews"></div>
+                            <button id="nextPage"><img src="app/img/arrow_right.png" alt=""></button>
+                        </div>
+                    </div>
+                </section>
+                <section class="sign_up">
 
+                </section>
             </main>
 
             <footer class="footer">
 
             </footer>
         </div>
-        <div class="modal1 modal_disable" id="modal_form">
-            <div class="modal__container" id="modalContainer">
-                <div class="modal_mode">
-                    <a href="#" class="registration_mode active" id="registration_mode">Зарегистрироваться</a>
-                    <a href="#" class="authorization_mode" id="authorization_mode">Авторизоваться</a>
-                </div>
-                <form id="registration" class="reg_form" action="app/php/registration.php" method="POST">
-                    <label>Фамилия</label>
-                    <input type="text" name="surname">
-                    <label>Имя</label>
-                    <input type="text" name="name">
-                    <label>Номер телефона</label>
-                    <input type="text" name="phone">
-                    <label>Email</label>
-                    <input type="text" name="password">
-                    <button type="submit">Зарегистрироваться</button>
-                </form>
-                <form id="authorization" class="auth_form disable" action="app/php/authorization.php" method="POST">
-                    <label>Email</label>
-                    <input type="text" name="email_authorization">
-                    <label>Пароль</label>
-                    <input type="text" name="password_authorization">
-                    <button type="submit">Авторизоваться</button>
-                </form>
+    </div>
+    <div class="modal1 modal_disable" id="modal_form">
+        <div class="modal__container" id="modalContainer">
+            <div class="modal_mode">
+                <a href="#" class="registration_mode active" id="registration_mode">Зарегистрироваться</a>
+                <a href="#" class="authorization_mode" id="authorization_mode">Авторизоваться</a>
             </div>
+            <form id="registration" class="reg_form" action="app/php/registration.php" method="POST">
+                <label>Фамилия</label>
+                <input type="text" name="surname" placeholder="Иванов">
+                <label>Имя</label>
+                <input type="text" name="name" placeholder="Иван">
+                <label>Номер телефона</label>
+                <input type="text" name="phone" placeholder="+7">
+                <label>Email</label>
+                <input type="text" name="password" placeholder="qwerty123">
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <form id="authorization" class="auth_form disable" action="app/php/authorization.php" method="POST">
+                <label>Email</label>
+                <input type="text" name="email_authorization">
+                <label>Пароль</label>
+                <input type="text" name="password_authorization">
+                <button type="submit">Авторизоваться</button>
+            </form>
         </div>
-
     </div>
 </body>
+<script src="app/js/reviews.js"></script>
 <script src="app/js/modal.js"></script>
 </html>

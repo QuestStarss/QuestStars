@@ -1,26 +1,27 @@
+@font-face {
+    font-family: 'Kumar One';
+url('fonts/kumar-one-cyrillic.otf') format('otf'); /* Альтернативный формат */
+}
+
 body {
     background: black;
+    font-family: 'Kumar One',sans-serif;
     color: white;
+    position: relative;
 }
 a {
     color: white;
 }
 
-@font-face {
-    font-family: 'Kumar';
-    url('fonts/kumar-one-cyrillic.otf') format('otf'); /* Альтернативный формат */
-}
+
 
 
 .wrapper {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 .wrapper__container {
-    max-width: 1400px;
     min-width: 320px;
     display: flex;
     justify-content: center;
@@ -32,7 +33,7 @@ a {
     position: fixed;
     left: 0;
     top: 0;
-    height: 50px;
+    height: 100px;
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -51,7 +52,7 @@ a {
 
 .logo {
     font-size: 30px;
-    font-family: Kumar, sans-serif;
+    font-family: 'Kumar One',sans-serif;
 }
 
 .header_menu-nav {
@@ -119,9 +120,111 @@ a {
     width: 300px; /* Ширина при раскрытии */
 }
 
+main {
+    flex:1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.main_tile {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../img/main_title.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 50px;
+}
 
 
+.main_tile > p {
+    font-size: 40px;
 
+}
+
+.main_tile > p > span {
+    font-size: 100px;
+    color: lightgoldenrodyellow;
+}
+
+
+.reviews {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../img/image 2.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reviews__container {
+    display: flex;
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reviews__see {
+    display: flex;
+    align-items: center;
+    width: 1020px;
+    flex-wrap: wrap;
+    transition: transform 0.3s ease; /* Добавляем анимацию перехода */
+}
+
+.review {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(0, 0, 0, 0.38);
+}
+
+.review > p {
+    font-size: 20px;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 70px;
+}
+
+.review > p:first-child {
+    padding: 0;
+}
+
+.reviews__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.reviews__wrapper > button {
+    background: transparent;
+}
+
+.reviews__wrapper > button > img {
+    width: 50px;
+    height: 50px;
+}
+
+.pagination > button {
+    background: transparent;
+    padding: 10px;
+}
 
 
 
@@ -137,19 +240,19 @@ a {
     opacity: 0;
 }
 
-.modal__container.form_active {
-    transform: translateY(0);
-}
-
 .modal1 {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     z-index: 100;
+    opacity: 1;
+    top:0;
+    left:0;
+    visibility: visible;
     background-color: rgba(0,0,0,0.5);
     transition: opacity 0.5s, visibility 0.5s;
 }
@@ -162,8 +265,7 @@ a {
     align-items: center;
     flex-direction: column;
     z-index: 110;
-    transform: translateY(100%);
-    transition: transform 1s ease;
+    background-color: white;
 }
 
 
@@ -218,6 +320,7 @@ a.authorization_mode.active {
 .reg_form > label {
     padding: 10px 0;
     font-size: 18px;
+    color: black
 }
 .reg_form > input {
     color: black;
@@ -254,6 +357,7 @@ a.authorization_mode.active {
 .auth_form > label {
     padding: 10px 0;
     font-size: 18px;
+    color: black
 }
 .auth_form > input {
     color: black;
