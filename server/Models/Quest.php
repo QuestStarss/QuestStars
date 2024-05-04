@@ -11,7 +11,7 @@ class Quest
     {
         $this->dbconfig = include(dirname(__DIR__) . '/config/config.php');
 
-        $stringConnection = "mysql:dbname=" . $this->dbconfig['database'] . ";host=" . $this->dbconfig['host'];
+        $stringConnection = "mysql:dbname=" . $this->dbconfig['database'] . ";host=" . $this->dbconfig['host'].';charset=utf8';
 
         $this->dbconnection = new \PDO($stringConnection, $this->dbconfig['username'], $this->dbconfig['password']);
     }
@@ -41,6 +41,15 @@ class Quest
             $dataArray = [];
 
             while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+
+                $stmt = $this->dbconnection->prepare("SELECT * FROM questImages WHERE `questId` = ?");
+
+                $stmt->execute([$row['id']]);
+
+                $imageLink = dirname(__DIR__). "\server\storage\quests/".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
+
+                $row['imageLink'] = $imageLink;
+
                 $row['avgRating'] = $row['rating'] / $row['numOfGrades'];
                 $dataArray[] = $row;
             }

@@ -10,7 +10,7 @@ class User
     {
         $this->dbconfig = include(dirname(__DIR__).'/config/config.php');
 
-        $stringConnection = "mysql:dbname=".$this->dbconfig['database'].";host=".$this->dbconfig['host'];
+        $stringConnection = "mysql:dbname=".$this->dbconfig['database'].";host=".$this->dbconfig['host'].';charset=utf8';
 
         $this->dbconnection = new \PDO($stringConnection, $this->dbconfig['username'], $this->dbconfig['password']);
     }

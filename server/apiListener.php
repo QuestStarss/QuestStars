@@ -4,6 +4,9 @@ header('Access-Control-Allow-Origin: *');
 header('content-type: application/json; charset=utf-8');
 header('Access-Control-Allow-Methods: POST');
 
+ini_set('display_errors', 'off');
+error_reporting(0);
+
 require 'Models\User.php';
 require 'Models\Quest.php';
 
@@ -73,4 +76,7 @@ switch ($thisRequest) {
         echo json_encode($quest->getQuestById($id));
 
         break;
+
+        default:
+            echo $thisRequest;
 }
