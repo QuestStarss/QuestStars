@@ -46,7 +46,7 @@ class Quest
 
                 $stmt->execute([$row['id']]);
 
-                $imageLink = dirname(__DIR__). "\server\storage\quests/".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
+                $imageLink = "server\\storage\\quests\\".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
 
                 $row['imageLink'] = $imageLink;
 
