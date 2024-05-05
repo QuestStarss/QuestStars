@@ -9,12 +9,15 @@ error_reporting(0);
 
 require 'Models\User.php';
 require 'Models\Quest.php';
+require  'Models\Comment.php';
 
 //$filesPath = include(dirname(__DIR__) . '/config/config.php');
 
 $user = new User();
 
 $quest = new Quest();
+
+$comments = new Comment();
 
 $requestAreaArray = array_reverse(explode('/', $_SERVER['REQUEST_URI']));
 
@@ -73,10 +76,31 @@ switch ($thisRequest) {
 
     case 'api/quest/read':
         $id = $_POST['id'];
-        echo json_encode($quest->getQuestById($id));
+        $quest = $quest->getQuestById($id);
+        echo json_encode($quest);
+
+
+        break;
+
+    case 'api/comment/read':
+        $id = $_POST['id'];
+        $commentsQuest = $comments->getCommentById($id);
+        echo json_encode($commentsQuest);
+        break;
+
+    case 'api/comment/create':
+        $comment = $_POST['comment'];
+        $srcQuest = $_POST['srcQuest'];
+        $user_id = $_POST['user_id'];
+        $mark = $_POST['mark'];
+
+        $newComment = $comments->createComment($comment,$srcQuest,$user_id,$mark);
+
+        echo json_encode($newComment);
 
         break;
 
         default:
-            echo $thisRequest;
+            echo json_encode(['error' => 'Данный адрес API не существует. Попробуйте встать от компьютера и выйти в окно']);
+            break;
 }
