@@ -177,7 +177,7 @@ main {
 .reviews__see {
     display: flex;
     align-items: center;
-    width: 1020px;
+    max-width: 1020px;
     flex-wrap: wrap;
     transition: transform 0.3s ease; /* Добавляем анимацию перехода */
 }
@@ -225,6 +225,7 @@ main {
     background: transparent;
     padding: 10px;
 }
+
 
 
 
@@ -330,16 +331,21 @@ a.authorization_mode.active {
     font-size: 18px;
     padding: 5px;
 }
-.reg_form > button {
+
+#reg_sub_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px 0;
-    padding: 20px;
+    height: 50px;
+    width: 300px;
     color: black;
     font-size: 20px;
     border-radius: 10px;
     transition: all .7s ease;
 }
 
-.reg_form > button:hover {
+#reg_sub_btn:hover {
     border-radius: 5px;
     transform: scale(0.95);
     background-color: #93e2ff;
@@ -368,16 +374,20 @@ a.authorization_mode.active {
     padding: 5px;
 }
 
-.auth_form > button {
+#auth_sub_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 10px 0;
-    padding: 20px;
+    height: 50px;
+    width: 300px;
     color: black;
     font-size: 20px;
     border-radius: 10px;
     transition: all .7s ease;
 }
 
-.auth_form > button:hover {
+#auth_sub_btn:hover {
     border-radius: 5px;
     transform: scale(0.95);
     background-color: #93e2ff;

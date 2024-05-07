@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="app/css/normalize.min.css">
     <link rel="stylesheet" href="app/css/index.css">
-    <title>QuestStars</title>
+    <link rel="stylesheet" href="app/css/quests.css">
+    <title>Document</title>
 </head>
 <body>
     <div class="wrapper">
         <div class="wrapper__container">
-
             <header class="header">
                 <div class="header__container">
                     <div class="header_left">
@@ -39,32 +39,36 @@
                     </div>
                 </div>
             </header>
-
             <main class="main">
-                <section class="main_tile">
-                    <p><span>QuestStars</span> - это не просто сайт для бронирования <br> квестов</p>
-                    <p><span>Это</span> портал в мир захватывающих приключений, где реальность <br> переплетается с фантазией, а логика и смекалка становятся ключом к<br> победе</p>
-                    <p><span>Мы</span> - команда энтузиастов, которые верят, что квесты - это не просто <br> развлечение, а уникальный способ сплотить друзей, испытать себя <br>открыть новые грани своего потенциала.</p>
-                </section>
-                <section class="reviews">
-                    <div class="reviews__container">
-                        <h1>Отзывы</h1>
-                        <div class="pagination" id="pagination"></div>
-                        <div class="reviews__wrapper">
-                            <button id="prevPage"><img src="app/img/arrow_left.png" alt=""></button>
-                            <div class="reviews__see" id="reviews"></div>
-                            <button id="nextPage"><img src="app/img/arrow_right.png" alt=""></button>
-                        </div>
-                    </div>
-                </section>
-                <section class="sign_up">
-
+                <form id="search_quest" class="search_quest" method="POST">
+                    <label>Рейтинг</label>
+                    <select id="rate">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <label>Жанр</label>
+                    <select id="janr">
+                        <option>Хоррор</option>
+                        <option>Приключение</option>
+                        <option>Расследование</option>
+                    </select>
+                    <label>Кол-во игроков</label>
+                    <select id="howMuch">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <input id="search_sub_btn" value="Поиск" type="submit">
+                </form>
+                <button id="show_all_quest" style="padding: 20px; color: black">Показать все квесты</button>
+                <section class="result_quests">
                 </section>
             </main>
-
-            <footer class="footer">
-
-            </footer>
         </div>
     </div>
     <div class="modal1 modal_disable" id="modal_form">
@@ -94,7 +98,7 @@
         </div>
     </div>
 </body>
-<script src="app/js/reviews.js"></script>
-<script src="app/js/modal.js"></script>
-<script src="app/js/user.js"></script>
+<script src="./app/js/modal.js"></script>
+<script src="./app/js/user.js"></script>
+<script src="./app/js/result_quests.js"></script>
 </html>
