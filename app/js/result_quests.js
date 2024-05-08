@@ -53,7 +53,7 @@ search_quests.addEventListener('submit', (event)=> {
     let janr = document.getElementById('janr').value;
     let players = parseInt(document.getElementById('howMuch').value); // преобразовано в число
     let rate = parseInt(document.getElementById('rate').value); // преобразовано в число
-    fetch('app/js/result_quests.json')
+    fetch('server/apiListener.php/api/quest/read')
         .then(response => response.json())
         .then(data => {
             console.log(data)
@@ -65,15 +65,15 @@ search_quests.addEventListener('submit', (event)=> {
 
             filteredQuests.forEach(quest => {
 
-                // fetch(quest.imageLink)
-                //     .then(response => response.blob())
-                //     .then(blob => {
-                //         const imageUrl = URL.createObjectURL(blob);
-                //         questElement.style.backgroundImage = `url(${imageUrl})`;
-                //     })
-                //     .catch(error => {
-                //         console.error('Ошибка при загрузке изображения:', error);
-                //     });
+                fetch(quest.imageLink)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const imageUrl = URL.createObjectURL(blob);
+                        questElement.style.backgroundImage = `url(${imageUrl})`;
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при загрузке изображения:', error);
+                    });
                 const questElement = document.createElement('div');
                 questElement.classList.add('quest');
 

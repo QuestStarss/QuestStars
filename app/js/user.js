@@ -51,11 +51,21 @@ document.getElementById('authorization').addEventListener('submit', function(eve
         .then(response => response.json())
         .then(data => {
             console.log(data)
+            let id = data.id;
+            let name = data.Name;
+            console.log(name)
+            let login = data.Login
+            let email = data.Email;
             if(data.message === 'error') {
                 alert('Неправильный логин или пароль')
             }
             else {
-                alert('Успешный вход')
+                sessionStorage.setItem('id', id);
+                sessionStorage.setItem('name', name);
+                sessionStorage.setItem('login', login);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('user_auth', 'true');
+                window.location.assign('./personal_account.html')
             }
         })
         .catch(error => {
