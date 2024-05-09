@@ -38,35 +38,40 @@ class Quest
         } else {
             $stmt = $this->dbconnection->query("SELECT * FROM quest");
 
-            $dataArray = [];
+            $dataArray = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $result = [];
 
-                $stmt = $this->dbconnection->prepare("SELECT * FROM questImages WHERE `questId` = ?");
+            foreach ($dataArray as $value){
 
-                $stmt->execute([$row['id']]);
+                $stmt = $this->dbconnection->prepare("SELECT * FROM questimages WHERE `questId` = ?");
+
+                $stmt->execute([$value['id']]);
 
                 $imageLink = "server\\storage\\quests\\".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
 
-                $row['imageLink'] = $imageLink;
+                $value['imageLink'] = $imageLink;
 
-                $row['avgRating'] = $row['rating'] / $row['numOfGrades'];
-                $dataArray[] = $row;
+                $value['avgRating'] = $value['rating'] / $value['numOfGrades'];
+
+                $result[] = $value;
+
             }
 
-            return $dataArray;
+            return $result;
         }
     }
 
     public function addQuest(array $params)
     {
-        $query = "INSERT INTO  quest(title,description,maxPlayers,rating,numOfGrades) VALUES (:title, :description, :maxPlayers,:rating,:numberOfGrades)";
+        $query = "INSERT INTO  quest(title,description,maxPlayers,rating,numOfGrades,genre) VALUES (:title, :description, :maxPlayers,:rating,:numberOfGrades,:genre)";
         $insertData = [
             'title' => $params['title'],
             'description' => $params['description'],
             'maxPlayers' => $params['maxPlayers'],
             'rating' => $params['rating'],
-            'numberOfGrades' => $params['numOfGrades']
+            'numberOfGrades' => $params['numOfGrades'],
+            'genre' => $params['genre']
         ];
 
         $stmt = $this->dbconnection->prepare($query);
