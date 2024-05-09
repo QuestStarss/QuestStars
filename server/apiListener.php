@@ -30,7 +30,7 @@ switch ($thisRequest) {
     case 'api/user/read':
         $id = $_POST['id'];
         echo json_encode($user->getUserById($id));
-        return;
+        break;
     case 'api/user/create':
         $name = $_POST['name'];
         $email = $_POST['email'];

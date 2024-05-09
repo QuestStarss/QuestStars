@@ -11,7 +11,7 @@ class Quest
     {
         $this->dbconfig = include(dirname(__DIR__) . '/config/config.php');
 
-        $stringConnection = "mysql:dbname=" . $this->dbconfig['database'] . ";host=" . $this->dbconfig['host'].';charset=utf8';
+        $stringConnection = "mysql:dbname=" . $this->dbconfig['database'] . ";host=" . $this->dbconfig['host'] . ';charset=utf8' . ';port=3306';
 
         $this->dbconnection = new \PDO($stringConnection, $this->dbconfig['username'], $this->dbconfig['password']);
     }
@@ -30,7 +30,7 @@ class Quest
 
             $stmt->execute([$id]);
 
-            $imageLink = dirname(__DIR__). "\server\storage\quests/".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
+            $imageLink = dirname(__DIR__) . "\server\storage\quests/" . $stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
 
             $result['imageLink'] = $imageLink;
 
@@ -38,27 +38,32 @@ class Quest
         } else {
             $stmt = $this->dbconnection->query("SELECT * FROM quest");
 
-            $dataArray = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+            try {
+                $dataArray = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            $result = [];
+                $result = [];
 
-            foreach ($dataArray as $value){
+                foreach ($dataArray as $value) {
 
-                $stmt = $this->dbconnection->prepare("SELECT * FROM questimages WHERE `questId` = ?");
+                    $stmt = $this->dbconnection->prepare("SELECT * FROM questImages WHERE `questId` = ?");
 
-                $stmt->execute([$value['id']]);
+                    $stmt->execute([$value['id']]);
 
-                $imageLink = "server\\storage\\quests\\".$stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
+                    $imageLink = "server\\storage\\quests\\" . $stmt->fetch(PDO::FETCH_ASSOC)['imageName'];
 
-                $value['imageLink'] = $imageLink;
+                    $value['imageLink'] = $imageLink;
 
-                $value['avgRating'] = $value['rating'] / $value['numOfGrades'];
+                    $value['avgRating'] = $value['rating'] / $value['numOfGrades'];
 
-                $result[] = $value;
+                    $result[] = $value;
 
+                }
+
+                return $result;
             }
-
-            return $result;
+            catch(PDOException $ex){
+                return ['error' => $ex->getMessage()];
+            }
         }
     }
 
@@ -81,8 +86,7 @@ class Quest
         try {
             $stmt->execute($insertData);
             $questId = $this->dbconnection->lastInsertId();
-        }
-        catch (PDOException $ex){
+        } catch (PDOException $ex) {
             return ['message' => 'error', 'errorText' => 'Ошибка при добавлении квеста', 'errorDbText' => $ex->getMessage()];
         }
 
@@ -98,8 +102,7 @@ class Quest
         try {
             $stmt->execute($imageParams);
             return ['message' => 'ok'];
-        }
-        catch (PDOException $ex){
+        } catch (PDOException $ex) {
             return ['message' => 'error', 'errorText' => 'Ошибка при добавлении изображения к квесту', 'dbError' => $ex->getMessage()];
         }
 
