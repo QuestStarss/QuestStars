@@ -1,0 +1,34 @@
+[
+  {
+    "title": "pis",
+    "description": "описание",
+    "maxPlayers": "5",
+    "avgRating": "5",
+    "janr": "Приключение",
+    "numOfGrades": "5"
+  },
+  {
+    "title": "pis",
+    "description": "описание",
+    "maxPlayers": "5",
+    "avgRating": "5",
+    "janr": "Хоррор",
+    "numOfGrades": "5"
+  },
+  {
+    "title": "dfdgdfg",
+    "description": "описание",
+    "maxPlayers": "4",
+    "avgRating": "4",
+    "janr": "Хоррор",
+    "numOfGrades": "5"
+  },
+  {
+    "title": "453545",
+    "description": "описание",
+    "maxPlayers": "4",
+    "avgRating": "4",
+    "janr": "Расследование",
+    "numOfGrades": "5"
+  }
+]
