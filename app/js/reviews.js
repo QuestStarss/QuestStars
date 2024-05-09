@@ -3,10 +3,20 @@ let currentPage = 1; // Текущая страница
 let totalPages; // Общее количество страниц
 let reviewsData; // Данные отзывов
 
+const userData = new FormData()
+
+userData.append('id', '0')
+
+const requestOptions = {
+    method: 'POST',
+    body: userData
+};
+
 window.onload = function() {
-    fetch("app/js/reviews.json")
+    fetch("server/apiListener.php/api/comment/read", requestOptions)
         .then(response => response.json())
         .then(data => {
+            console.log(data)
             reviewsData = data; // Сохраняем данные отзывов
             totalPages = Math.ceil(reviewsData.length / reviewsPerPage); // Рассчитываем общее количество страниц
             displayReviews(reviewsData);
