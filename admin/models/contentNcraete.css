@@ -1,0 +1,58 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgba(10, 18, 12, 0.7);
+    height: 100%;
+    width: 100%;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 6fr 3fr;
+    justify-items: center;
+}
+
+.create-quest{
+    width: 80%;
+}
+
+#createQuest{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Montserrat, sans-serif;
+    border: none;
+    background-color: rgba(10, 18, 12, 0.7);
+}
+
+#createQuest *{
+    border: none;
+    background-color: rgba(10, 18, 12, 0.7);
+    color: white;
+}
+
+.quest-record{
+    border: 1px solid white;
+    width: 100%;
+    margin: 20px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    justify-items: center;
+    color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+}
+
+.quest-info{
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    grid-auto-rows: auto;
+    overflow-y: scroll;
+}

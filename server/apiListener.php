@@ -51,6 +51,11 @@ switch ($thisRequest) {
 
         break;
 
+    case 'api/user/ultimate':
+        echo json_encode($user->getUsersCommentsOrders());
+
+        break;
+
     case 'api/quest/create':
 
         $isHaveFiles = isset($_FILES);

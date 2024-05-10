@@ -1,0 +1,37 @@
+.body-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40vh;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgba(10, 18, 12, 0.7);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+h1{
+    font-size: 4rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    background: none;
+    margin: 3rem;
+    border: 5px solid #002700;
+    color: white;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    width: 20vw;
+}

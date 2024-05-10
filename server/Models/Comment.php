@@ -30,7 +30,7 @@ class Comment
 
             return $dataArray;
         } else {
-            $stmt = $this->dbconnection->query("SELECT * FROM comment");
+            $stmt = $this->dbconnection->query("SELECT * FROM comment LEFT JOIN User on comment.userid = User.id LEFT JOIN quest on comment.questId = quest.id WHERE comment.questId = :srcQuest");
 
             $dataArray = [];
 

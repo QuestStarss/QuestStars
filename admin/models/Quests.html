@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Квесты</title>
+    <link rel="stylesheet" href="contentNcraete.css">
+</head>
+<body>
+<h1>Квесты</h1>
+<div class="quest-info">
+
+</div>
+<div class="create-quest">
+    <form action="" id="createQuest">
+        <input type="file" name="questPhoto">
+        <input type="text" placeholder="Название квеста" name="title">
+        <input type="number" placeholder="Общий рейтинг" name="rating">
+        <input type="number" placeholder="Количество оценок" name="numOfGrades">
+        <input type="number" name="maxPlayers" id="" placeholder="Максимальное число игроков">
+        <textarea name="description" placeholder="Описание квеста" id="" cols="30" rows="10"></textarea>
+        <select name="genre" id="">
+            <option value="Хоррор">Хоррор</option>
+            <option value="Приключения">Приключения</option>
+            <option value="Комедия">Комедия</option>
+        </select>
+        <input type="submit" value="Создать квест" id="newQuest">
+    </form>
+</div>
+<script src="Quest.js"></script>
+</body>
+</html>
