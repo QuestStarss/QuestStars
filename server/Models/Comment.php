@@ -16,17 +16,11 @@ class Comment
     }
 
     public function getCommentsByUserId(){
-        $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid LEFT JOIN questorder ON questorder.id = comment.questId");
+        $stmt = $this->dbconnection->prepare("SELECT quest.title, User.name, comment.comment , comment.userRate FROM comment LEFT JOIN User ON comment.userid = User.id LEFT JOIN queststars.questorder q on comment.questId = q.id LEFT JOIN quest ON q.quest_id = quest.id");
         try {
             $stmt->execute();
 
-            $dataArray = [];
-
-            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
-            }
-
-            return $dataArray;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch(PDOException $ex){
             return ['message' => $ex->getMessage()];
