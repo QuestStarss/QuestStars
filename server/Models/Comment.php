@@ -16,7 +16,7 @@ class Comment
     }
 
     public function getCommentsByUserId(){
-        $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid LEFT JOIN quest ON quest.id = comment.questId");
+        $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid LEFT JOIN questorder ON questorder.id = comment.questId");
         try {
             $stmt->execute();
 
