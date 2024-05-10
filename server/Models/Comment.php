@@ -19,26 +19,38 @@ class Comment
     {
 
         if ($id != 0) {
-            $stmt = $this->dbconnection->prepare("SELECT * FROM User LEFT JOIN comment on comment.userid = User.id WHERE comment.questId=:srcQuest");
-            $stmt->execute(['srcQuest' => $id]);
+            $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid WHERE comment.questId=:srcQuest");
+            try {
+                $stmt->execute(['srcQuest' => $id]);
 
-            $dataArray = [];
+                $dataArray = [];
 
-            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $dataArray[] = $row;
+                }
+
+                return $dataArray;
             }
-
-            return $dataArray;
+            catch(\PDOException $e) {
+                return ['message' => $e->getMessage()];
+            }
         } else {
-            $stmt = $this->dbconnection->query("SELECT * FROM comment LEFT JOIN User on comment.userid = User.id LEFT JOIN quest on comment.questId = quest.id WHERE comment.questId = :srcQuest");
+            $stmt = $this->dbconnection->query("SELECT * FROM comment LEFT JOIN User on comment.userid = User.id LEFT JOIN quest on comment.questId = quest.id");
 
-            $dataArray = [];
+            try {
 
-            while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
-                $dataArray[] = $row;
+                $stmt->execute();
+                $dataArray = [];
+
+                while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+                    $dataArray[] = $row;
+                }
+
+                return $dataArray;
             }
-
-            return $dataArray;
+            catch(PDOException $ex){
+                return ['message' => $ex->getMessage()];
+            }
         }
     }
 
