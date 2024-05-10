@@ -110,9 +110,7 @@ switch ($thisRequest) {
         break;
 
     case "api/comment/readbyuser":
-        $user_id = $_POST['user_id'];
-
-        return json_encode($comments->getCommentsByUserId($user_id));
+        return json_encode($comments->getCommentsByUserId());
 
     case 'api/order/read':
         $id = $_POST['id'];

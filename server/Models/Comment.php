@@ -15,10 +15,10 @@ class Comment
         $this->dbconnection = new \PDO($stringConnection, $this->dbconfig['username'], $this->dbconfig['password']);
     }
 
-    public function getCommentsByUserId($user_id){
-        $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid LEFT JOIN quest ON quest.id = comment.questId WHERE comment.userid=:user_id");
+    public function getCommentsByUserId(){
+        $stmt = $this->dbconnection->prepare("SELECT * FROM comment LEFT JOIN User on User.id = comment.userid LEFT JOIN quest ON quest.id = comment.questId");
         try {
-            $stmt->execute([':user_id' => $user_id]);
+            $stmt->execute();
 
             $dataArray = [];
 
